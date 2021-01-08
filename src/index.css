@@ -1,0 +1,70 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header {
+  border: 1px solid grey;
+  background-color: grey;
+  padding: 10px;
+}
+
+header>nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+header>nav>ul>li>a {
+  font-weight: bold;
+  color: black;
+}
+
+header>nav>a {
+  text-decoration: none;
+  color: cornsilk;
+}
+
+section>h2,
+section>p,
+.loader {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 2vmin;
+}
+
+.wrapper>div {
+  margin: 0 2vmin;
+}
+
+main>ul {
+  padding-left: 30px;
+}
+
+.todo {
+  margin-left: 10px;
+  color: red;
+}
+
+.rating {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1vmin 0;
+  color: cadetblue;
+  font-size: 2vmin;
+}
