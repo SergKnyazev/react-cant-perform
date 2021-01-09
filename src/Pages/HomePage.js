@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { NumericTextBox } from '@progress/kendo-react-inputs';
 import { Loader } from '@progress/kendo-react-indicators';
@@ -7,14 +8,17 @@ import '@progress/kendo-theme-default/dist/all.css';
 import { MOVIE_DB_URL, MOVIE_DB_KEY, MOVIE_DB_LANGUAGE } from '../config';
 import ResponseStatus404 from './ResponseStatus404';
 
-const HomePage = () => {
+import idFilmStore from '../store/idFilmStore';
+import Counter from './Counter';
+
+const HomePage = observer(() => {
   const [movie, setMovie] = useState(null);
-  const [idMovie, setIdMovie] = useState(551);
+  // const [idMovie, setIdMovie] = useState(idFilmStore.idFilm);
   const [loading, setLoading] = useState(true);
   const [error404, setError404] = useState(false);
 
-  const MOVIE_DB_GET = `${MOVIE_DB_URL}${idMovie}${MOVIE_DB_KEY}${MOVIE_DB_LANGUAGE}`;
-  const message404 = `Фильма с id=${idMovie} НЕ существует!`;
+  const MOVIE_DB_GET = `${MOVIE_DB_URL}${idFilmStore.idFilm}${MOVIE_DB_KEY}${MOVIE_DB_LANGUAGE}`;
+  const message404 = `Фильма с id=${idFilmStore.idFilm} НЕ существует!`;
 
   useEffect(() => {
     let cleanupFunction = false;
@@ -64,7 +68,8 @@ const HomePage = () => {
   const changeIdMovie = (e) => {
     setLoading(true);
     console.log(e.value);
-    setIdMovie(e.value);
+    idFilmStore.changeIdFilm(e.value);
+    // setIdMovie(e.value);
   };
 
   const descriptionMovie = () => {
@@ -83,10 +88,6 @@ const HomePage = () => {
       vote_count,
     } = movie;
 
-    // release_date: "1972-12-13"
-    // vote_average: 7.2
-    // vote_count: 527
-    
     const poster = `https://image.tmdb.org/t/p/w200${poster_path}`;
 
     if (loading) {
@@ -153,7 +154,7 @@ const HomePage = () => {
       <label style={{ textAlign: 'center', display: 'block' }}>
         Выберите ID фильма =
         <NumericTextBox
-          value={idMovie}
+          value={idFilmStore.idFilm}
           min={551}
           max={577}
           step={1}
@@ -162,8 +163,10 @@ const HomePage = () => {
       </label>
 
       {movie ? descriptionMovie() : false}
+
+      <Counter />
     </main>
   );
-};
+});
 
 export default HomePage;

@@ -68,3 +68,30 @@ main>ul {
   color: cadetblue;
   font-size: 2vmin;
 }
+
+.counter {
+  background-color: black;
+  color:bisque;
+  text-align: center;
+}
+
+.count {
+  font-size: 3vmin;
+  padding-top: 1vmin;
+}
+
+.btns {
+  max-width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1vmin 0;
+}
+
+.btn {
+  width: 5vmin;
+  height: 3vmin;
+  font-size: 2vmin;
+  cursor: pointer;
+}
