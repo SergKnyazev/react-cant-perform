@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import counterStore from '../store/counterStore';
+import counterStore from '../store/counterStoreClass';
 
 const Counter = observer(() => {
 console.log('counterStore');
