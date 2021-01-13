@@ -41,7 +41,6 @@ section>p,
 }
 
 .wrapper {
-  margin-top: 10px;
   display: flex;
   justify-content: space-around;
   margin: 0 2vmin;

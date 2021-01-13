@@ -1,0 +1,19 @@
+.todo {
+    background-color: #ffeb3b;
+    margin: 0;
+    padding: 2vmin;
+}
+
+.todo__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo__title {
+
+}
+
+.todo__remove {
+
+}

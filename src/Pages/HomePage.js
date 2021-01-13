@@ -10,6 +10,7 @@ import ResponseStatus404 from './ResponseStatus404';
 
 import idFilmStore from '../store/idFilmStore';
 import Counter from './Counter';
+import TodoList from './TodoList';
 
 const HomePage = observer(() => {
   const [movie, setMovie] = useState(null);
@@ -165,6 +166,8 @@ const HomePage = observer(() => {
       {movie ? descriptionMovie() : false}
 
       <Counter />
+      <TodoList />
+
     </main>
   );
 });
