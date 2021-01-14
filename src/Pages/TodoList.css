@@ -6,14 +6,28 @@
 
 .todo__wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin: 1vmin 0;
+    border: 1px solid gray;
+    background-color: goldenrod;
 }
 
 .todo__title {
+    width: 95%;
+}
 
+.todo__title--completed {
+    width: 95%;
+    background-color: coral;
 }
 
 .todo__remove {
+    width: 2vmin;
+    height: 2vmin;
+}
 
+.todo__fetch {
+    width: 12vmin;
+    height: 4vmin;
 }

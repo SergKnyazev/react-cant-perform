@@ -1,17 +1,43 @@
 import React from 'react';
 import './TodoList.css';
-import instanceTodoStore from '../store/todoStore';
+import instTodoStore from '../store/todoStore';
 import {observer} from 'mobx-react-lite';
 
 const TodoList = observer(() => {
+  console.log('instTodoStore');
+  console.log(instTodoStore);
+
   return (
     <section className='todo'>
-      { instanceTodoStore.todos.map( todo =>
+      <button
+        className='todo__fetch'
+        onClick={() => instTodoStore.fetchTodosAsync()}
+      >Fetch todos
+      </button>
+      { instTodoStore.todos.map( todo =>
         (
-          <div className='todo__wrapper' key={todo.id}>
-            <input className='todo__completed' type='checkbox' />
-            <p className='todo__title'>{todo.title}</p>
-            <button className='todo__remove'>&#10006;</button>
+          <div
+            className='todo__wrapper'
+            key={todo.id}
+          >
+            <input
+              className='todo__completed'
+              type='checkbox'
+              checked={todo.completed}
+              onChange={() => instTodoStore.completeTodo(todo.id)}
+            />
+            {
+              todo.completed
+                ?
+                <p className='todo__title--completed'>{todo.title}</p>
+                :
+                <p className='todo__title'>{todo.title}</p>
+            }
+            <button
+              className='todo__remove'
+              onClick={() => instTodoStore.removeTodo(todo.id)}
+            >&#10006;
+            </button>
           </div>
         )
       )}

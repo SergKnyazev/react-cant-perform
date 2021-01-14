@@ -54,11 +54,6 @@ main>ul {
   padding-left: 30px;
 }
 
-.todo {
-  margin-left: 10px;
-  color: red;
-}
-
 .rating {
   display: flex;
   justify-content: space-around;

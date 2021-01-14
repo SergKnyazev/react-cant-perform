@@ -24,6 +24,18 @@ class TodoStore {
     this.todos = this.todos.map( todo => todo.id === id ? {...todo, completed: !todo.completed} : todo);
   }
 
+  fetchTodos() {
+    fetch('https://jsonplaceholder.typicode.com/todos?_start=0&_limit=5')
+      .then(response => response.json())
+      .then(json => this.todos = [...json])
+  }
+
+  async fetchTodosAsync() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos?_start=0&_limit=5');
+    const json = await response.json();
+    this.todos = [...json];
+  }
+
 }
 
 export default new TodoStore();
