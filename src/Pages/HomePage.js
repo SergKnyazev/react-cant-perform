@@ -150,6 +150,10 @@ const HomePage = observer(() => {
 
   return (
     <main>
+
+      <Counter />
+      <TodoList />
+
       <h1>Галерея фильмов</h1>
 
       <label style={{ textAlign: 'center', display: 'block' }}>
@@ -164,9 +168,6 @@ const HomePage = observer(() => {
       </label>
 
       {movie ? descriptionMovie() : false}
-
-      <Counter />
-      <TodoList />
 
     </main>
   );

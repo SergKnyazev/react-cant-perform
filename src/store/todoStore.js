@@ -20,8 +20,12 @@ class TodoStore {
     this.todos = this.todos.filter( todo => todo.id !== id);
   }
 
-  completeTodo(id) {
-    this.todos = this.todos.map( todo => todo.id === id ? {...todo, completed: !todo.completed} : todo);
+  // completeTodo(id) {
+  //   this.todos = this.todos.map( todo => todo.id === id ? {...todo, completed: !todo.completed} : todo);
+  // }
+
+  completeTodo(todo) {
+    todo.completed = !todo.completed;
   }
 
   fetchTodos() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 import instTodoStore from '../store/todoStore';
-import {observer} from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
 const TodoList = observer(() => {
   console.log('instTodoStore');
@@ -24,7 +24,8 @@ const TodoList = observer(() => {
               className='todo__completed'
               type='checkbox'
               checked={todo.completed}
-              onChange={() => instTodoStore.completeTodo(todo.id)}
+              // onChange={() => instTodoStore.completeTodo(todo.id)}
+              onChange={() => instTodoStore.completeTodo(todo)}
             />
             {
               todo.completed
@@ -33,6 +34,14 @@ const TodoList = observer(() => {
                 :
                 <p className='todo__title'>{todo.title}</p>
             }
+
+            {/*{*/}
+            {/*  todo.completed && <p className='todo__title--completed'>{todo.title}</p>*/}
+            {/*}*/}
+            {/*{*/}
+            {/*  todo.completed || <p className='todo__title'>{todo.title}</p>*/}
+            {/*}*/}
+
             <button
               className='todo__remove'
               onClick={() => instTodoStore.removeTodo(todo.id)}
