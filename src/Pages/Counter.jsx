@@ -7,14 +7,15 @@ console.log('counterStore');
 console.log(counterStore);
 // console.log(counterStore.decrement);
 
-const dec = () => counterStore.decrement();
+  const dec = () => counterStore.decrement();
+  const inc = () => counterStore.increment();
 
   return (
     <section className='counter'>
       <div className='count'>{counterStore.total}</div>
       <div className='btns'>
         <button className='btn' onClick={dec}>-</button>
-        <button className='btn' onClick={() => counterStore.increment()}>+</button>
+        <button className='btn' onClick={inc}>+</button>
       </div>
     </section>
   )
