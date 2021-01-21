@@ -4,8 +4,18 @@ import counterStoreRxJS from '../store/counterStoreRxJS';
 const CounterRxJS = () => {
   const [count, setCount] = useState(counterStoreRxJS.count);
 
+  console.log('counterStoreRxJS in CounterRxJS-------------------');
+  console.log(counterStoreRxJS);
+
+  //вариант 1й
+  // useLayoutEffect(() => {
+  //   counterStoreRxJS.subscribe(setCount);
+  // },[])
+  //
+
+  //вариант 2й
   useLayoutEffect(() => {
-    counterStoreRxJS.subscribe(setCount);
+    counterStoreRxJS.returnStream().subscribe(setCount);
   },[])
 
   const dec = () => counterStoreRxJS.decrement();
@@ -23,8 +33,3 @@ const CounterRxJS = () => {
 }
 
 export default CounterRxJS;
-
-/**
- * Компонент только создан
- * надо импортировать свой стор RxJS
- * */

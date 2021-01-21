@@ -9,6 +9,9 @@ const initialState = 0;
 const counterStream$ = new BehaviorSubject(initialState);
 console.log('counterStream$ ===');
 console.log(counterStream$);
+console.log(counterStream$.value);
+console.log(counterStream$.getValue());
+
 
 class CounterStoreRxJS {
   count = initialState;
@@ -19,14 +22,12 @@ class CounterStoreRxJS {
 
   increment() {
     this.count = this.count + 1;
-    console.log('increment--rxjs', this.count);
     counterStream$.next(this.count);
     console.log('increment--rxjs--', this.count);
   }
 
   decrement() {
     this.count = this.count - 1;
-    console.log('decrement--rxjs', this.count);
     counterStream$.next(this.count);
     console.log('decrement--rxjs--', this.count);
   }
@@ -35,8 +36,17 @@ class CounterStoreRxJS {
     return `Count rxjs = ${this.count}`;
   }
 
-  subscribe(_setState) {
-    return counterStream$.subscribe(_setState);
+  //вариант 1й
+  subscribe(_setStateFn) {
+    return counterStream$.subscribe(_setStateFn);
+  }
+
+  // TODO:Попробовать вернуть весь стрим и в компоненте CounterRxJS
+  // TODO:подписаться на него
+
+  //вариант 2й
+  returnStream() {
+    return counterStream$;
   }
 
 }
