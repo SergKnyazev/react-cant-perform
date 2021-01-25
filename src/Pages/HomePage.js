@@ -12,6 +12,8 @@ import idFilmStore from '../store/idFilmStore';
 import Counter from './Counter';
 import TodoList from './TodoList';
 import CounterRxJS from './CounterRxJS'
+// @ts-ignore
+import CounterRxJS2 from './CounterRxJS2';
 
 const HomePage = observer(() => {
   const [movie, setMovie] = useState(null);
@@ -154,7 +156,10 @@ const HomePage = observer(() => {
 
       <Counter />
       <TodoList />
+
       <CounterRxJS />
+      <h2>RxJS with operators</h2>
+      <CounterRxJS2 />
 
       <h1>Галерея фильмов</h1>
 

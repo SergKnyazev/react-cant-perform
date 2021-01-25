@@ -1,4 +1,5 @@
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
+import {scan} from 'rxjs/operators';
 
 // const initialState = {
 //   count: 7,
@@ -7,10 +8,17 @@ import { BehaviorSubject } from 'rxjs';
 const initialState = 0;
 
 const counterStream$ = new BehaviorSubject(initialState);
+
+// const counterStream2$ = new BehaviorSubject(initialState);
+//
+// const counterStream$ = counterStream2$.pipe(
+//   scan(count => count + 1, 0)
+// );
+
 console.log('counterStream$ ===');
 console.log(counterStream$);
-console.log(counterStream$.value);
-console.log(counterStream$.getValue());
+// console.log(counterStream$.value);
+// console.log(counterStream$.getValue());
 
 
 class CounterStoreRxJS {
