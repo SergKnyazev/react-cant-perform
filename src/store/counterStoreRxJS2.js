@@ -1,12 +1,17 @@
-import { BehaviorSubject } from 'rxjs';
-import { scan, map } from 'rxjs/operators';
+import {BehaviorSubject, merge} from 'rxjs';
+import {scan} from 'rxjs/operators';
 
 const initialState = 0;
 // const counterIncStream$ = new BehaviorSubject(initialState);
 const counterIncStream$ = new BehaviorSubject(null);
+const counterDecStream$ = new BehaviorSubject(null);
 
 const counterInc$ = counterIncStream$.pipe(
   scan(count => count + 1, initialState)
+);
+
+const counterDec$ = counterDecStream$.pipe(
+  scan(count => count - 1, initialState)
 );
 
 console.log('counterInc$ ===');
@@ -16,7 +21,7 @@ console.log(counterInc$);
 
 
 class CounterStoreRxJS2 {
-  // count = initialState;
+  count = initialState;
 
   constructor() {
     // makeAutoObservable(this)
@@ -39,7 +44,9 @@ class CounterStoreRxJS2 {
     // counterStream$.next(this.count);
     // console.log('decrement--rxjs--', this.count);
 
+    counterDec$.next();
     console.log('decrement--rxjs--');
+    console.log(counterDec$);
   }
 
   get total() {
@@ -47,18 +54,23 @@ class CounterStoreRxJS2 {
   }
 
   //вариант 1й
-  // subscribe(_setStateFn) {
-  //   return counterStream$.subscribe(_setStateFn);
-  // }
+  subscr(_setStateFn) {
+    // return counterInc$.subscribe(_setStateFn);
+    return merge(counterInc$, counterDec$).subscribe(_setStateFn);
+  }
 
   // TODO: описать стрим и для вычитания counterDec$
   // TODO: смёржить 2 стрима на + и на -
   // TODO: где и как описывать count?
 
   //вариант 2й
-  returnStream() {
-    return counterInc$;
-  }
+  // returnStream() {
+  //   return counterDec$;
+  // }
+  //
+  // returnStream2() {
+  //   return counterInc$;
+  // }
 
 }
 
